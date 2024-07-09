@@ -25,7 +25,7 @@ TODO:
 -clear ringed items after checkout
 -ringedItem takes total cash and then gives the change.
 
-
+test
 -GUI for Casheier with method from Ringed item interactable there.
 */
 public class GRegister2 {
