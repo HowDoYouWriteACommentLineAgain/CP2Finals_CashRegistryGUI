@@ -27,8 +27,6 @@ TODO:
 
 
 -GUI for Casheier with method from Ringed item interactable there.
-
-testing
 */
 public class GRegister2 {
 
