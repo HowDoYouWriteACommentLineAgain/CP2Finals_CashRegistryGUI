@@ -33,6 +33,10 @@ public class GRegister2 {
     public static void main(String[] args) {
          Inventory inventory = new Inventory(5);//Note that 0 is the header and should be skipped;
          RingedItems checkout = new RingedItems();//stores items that are ringed
+         
+         checkout.add(new Item("TestBarCode", "TestName", 2, 12));
+         System.out.println(checkout.get(0).getName());//testing of checkout.
+         
 //         System.out.println("Your Total is: $"+checkout.totalAllItems());
 //         inventory.printInventory();
     }
