@@ -18,9 +18,6 @@ import java.util.Scanner;
 
 /*
 TODO:
--Remove scanner declaration in item
--Add scanner parameter to Item(int row) in item
--declare scanner in main instead in item
 
 -when printing total cost, add system which removes duplicates.
 
