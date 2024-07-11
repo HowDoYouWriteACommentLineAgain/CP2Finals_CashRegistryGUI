@@ -44,7 +44,7 @@ public class Item {
             id = tempStringHolder.get(y * WIDTH);
             name = tempStringHolder.get(y * WIDTH + 1);
             amount = Integer.parseInt(tempStringHolder.get(y * WIDTH + 2));
-            price = Float.parseFloat(tempStringHolder.get(y * WIDTH + 3));
+            price = Double.parseDouble(tempStringHolder.get(y * WIDTH + 3));
             
 //            tempStringHolder.clear();
 //            InvScanner.close();
