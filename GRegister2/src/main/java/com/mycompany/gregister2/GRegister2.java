@@ -8,6 +8,9 @@ import java.io.*;
 import java.util.*;
 import static java.nio.file.StandardOpenOption.*;
 import java.util.ArrayList;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
 /**
  *
  * @author Admin
@@ -29,13 +32,20 @@ test
 -GUI for Casheier with method from Ringed item interactable there.
 */
 public class GRegister2 {
+    static Path p = Paths.get("inventory.csv").toAbsolutePath();
 
     public static void main(String[] args) {
-         Inventory inventory = new Inventory(5);//Note that 0 is the header and should be skipped;
-         RingedItems checkout = new RingedItems();//stores items that are ringed
-         
-         checkout.add(new Item("TestBarCode", "TestName", 2, 12));
-         System.out.println(checkout.get(0).getName());//testing of checkout.
+        try {
+            Scanner scanner = new Scanner(p);
+            Inventory inventory = new Inventory(scanner);
+            inventory.printInventory();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        -RingedItems checkout = new RingedItems();//stores items that are ringed
+//
+//        -checkout.add(new Item("TestBarCode", "TestName", 2, 12));
+//        -System.out.println(checkout.get(0).getName());//testing of checkout.
          
 //         System.out.println("Your Total is: $"+checkout.totalAllItems());
 //         inventory.printInventory();

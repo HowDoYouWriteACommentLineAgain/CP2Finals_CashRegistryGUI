@@ -4,8 +4,8 @@
  */
 package com.mycompany.gregister2;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,44 +14,44 @@ import java.util.Scanner;
  * @author Admin
  */
 public class Item {
-    static Path p = Paths.get("inventory.csv").toAbsolutePath();
+//    static Path p = Paths.get("inventory.csv").toAbsolutePath();
     
     private String id, name;
     private int amount;
     private double price;
-    private int width = 4;
-    private ArrayList<String> tempStringHolder;
+    private static final int WIDTH = 4;
+//    private ArrayList<String> tempStringHolder;
 
-    public void Item(){};
+//    public void Item(){};
     
-    public Item(int row) {//Will add the item on the row argument.
-        try {
+    public Item(int row, ArrayList<String> tempStringHolder) {//Will add the item on the row argument.
+//        try {
             tempStringHolder = new ArrayList<>();
             int y = row;
-            Scanner InvScanner = new Scanner(p);
+//            Scanner InvScanner = new Scanner(p);
 //TODO:
 /*
 -Remove scanner declaration here
 -Add scanner parameter to Item(int row)
 -declare scanner in main instead
 */
-            InvScanner.useDelimiter(",|\n");
+//            InvScanner.useDelimiter(",|\n");
+//
+//            while (InvScanner.hasNext()) {
+//                tempStringHolder.add(InvScanner.next());
+//            }
 
-            while (InvScanner.hasNext()) {
-                tempStringHolder.add(InvScanner.next());
-            }
-
-            id = tempStringHolder.get(y * width + 0);
-            name = tempStringHolder.get(y * width + 1);
-            amount = Integer.parseInt(tempStringHolder.get(y * width + 2));
-            price = Float.parseFloat(tempStringHolder.get(y * width + 3));
+            id = tempStringHolder.get(y * WIDTH);
+            name = tempStringHolder.get(y * WIDTH + 1);
+            amount = Integer.parseInt(tempStringHolder.get(y * WIDTH + 2));
+            price = Float.parseFloat(tempStringHolder.get(y * WIDTH + 3));
             
-            tempStringHolder.clear();
-            InvScanner.close();
+//            tempStringHolder.clear();
+//            InvScanner.close();
 
-        } catch (Exception e) {
-            System.out.println("Error for Item.java: "+e);
-        }
+//        } catch (Exception e) {
+//            System.out.println("Error for Item.java: "+e);
+//        }
     }
 
     public Item(String i, String n, int a, double p) {//will add the item per the users argument.
@@ -62,7 +62,7 @@ public class Item {
     }
 
     public void printData() {
-        System.out.println("id: " + id + " name: " + name + " amount: " + amount + " Price: " + price);
+        System.out.println("ID: " + id + " Name: " + name + " Amount: " + amount + " Price: " + price);
     }
 
     public String getId() {

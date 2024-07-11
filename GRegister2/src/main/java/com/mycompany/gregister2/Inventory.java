@@ -5,7 +5,7 @@
 package com.mycompany.gregister2;
 
 import java.util.ArrayList;
-
+import java.util.Scanner;
 /**
  *
  * @author Admin
@@ -13,14 +13,29 @@ import java.util.ArrayList;
 public class Inventory extends ArrayList<Item>{
 //    ArrayList<Item> inventory = new ArrayList<>();//Creates the inventory
     
-        public Inventory(int rows){
-            for (int i = 1; i <= rows; i++) {
-                this.add(new Item(i));
+        public Inventory(Scanner s){
+            ArrayList<String> tempStringHolder = new ArrayList<>();
+            s.useDelimiter(",|\n");
+            
+            // Skip header row
+            if (s.hasNextLine()) {
+                s.nextLine();
+            }
+
+            while (s.hasNext()) {
+                tempStringHolder.add(s.next());
+            }
+
+            int rows = tempStringHolder.size() / 4;
+            
+            for (int i = 0; i < rows; i++) {
+                this.add(new Item(i, tempStringHolder));
             }
         }
         
-        public void printInventory(){
-            for (int i = 0; i <= this.size() - 1; i++) 
-                this.get(i).printData();
+        public void printInventory() {
+        for (Item item : this) {
+            item.printData();
         }
+    }
 }
