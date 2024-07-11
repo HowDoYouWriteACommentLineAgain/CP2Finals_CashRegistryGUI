@@ -23,15 +23,17 @@ public class Inventory extends ArrayList<Item>{
             }
 
             while (s.hasNext()) {
-                tempStringHolder.add(s.next());
+                tempStringHolder.add(s.next());//Adds item while there is one.
             }
 
-            int rows = tempStringHolder.size() / 4;
+            int rows = tempStringHolder.size() / 4;//Dynamically holds the rows of the csv file.
             
             for (int i = 0; i < rows; i++) {
                 this.add(new Item(i, tempStringHolder));
             }
         }
+        
+        
         
         public void printInventory() {
         for (Item item : this) {
