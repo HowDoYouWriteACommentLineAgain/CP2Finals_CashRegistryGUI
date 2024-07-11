@@ -14,44 +14,20 @@ import java.util.Scanner;
  * @author Admin
  */
 public class Item {
-//    static Path p = Paths.get("inventory.csv").toAbsolutePath();
     
     private String id, name;
     private int amount;
     private double price;
     private static final int WIDTH = 4;
-//    private ArrayList<String> tempStringHolder;
 
-//    public void Item(){};
+    public void Item(){};
     
     public Item(int row, ArrayList<String> tempStringHolder) {//Will add the item on the row argument.
-//        try {
-//            tempStringHolder = new ArrayList<>();
-            int y = row;
-//            Scanner InvScanner = new Scanner(p);
-//TODO:
-/*
--Remove scanner declaration here
--Add scanner parameter to Item(int row)
--declare scanner in main instead
-*/
-//            InvScanner.useDelimiter(",|\n");
-//
-//            while (InvScanner.hasNext()) {
-//                tempStringHolder.add(InvScanner.next());
-//            }
-
-            id = tempStringHolder.get(y * WIDTH);
-            name = tempStringHolder.get(y * WIDTH + 1);
-            amount = Integer.parseInt(tempStringHolder.get(y * WIDTH + 2));
-            price = Double.parseDouble(tempStringHolder.get(y * WIDTH + 3));
-            
-//            tempStringHolder.clear();
-//            InvScanner.close();
-
-//        } catch (Exception e) {
-//            System.out.println("Error for Item.java: "+e);
-//        }
+        int y = row;
+        id = tempStringHolder.get(y * WIDTH);
+        name = tempStringHolder.get(y * WIDTH + 1);
+        amount = Integer.parseInt(tempStringHolder.get(y * WIDTH + 2));
+        price = Double.parseDouble(tempStringHolder.get(y * WIDTH + 3));
     }
 
     public Item(String i, String n, int a, double p) {//will add the item per the users argument.
