@@ -33,6 +33,7 @@ public class GRegister2 {
 
     public static void main(String[] args) {
         Inventory inventory = null;
+        
         try {
             Scanner scanner = new Scanner(p);
             inventory = new Inventory(scanner);
@@ -42,7 +43,7 @@ public class GRegister2 {
         }
         
         RingedItems checkout = new RingedItems();//stores items that are ringed
-//
+        
         checkout.add(inventory.get(0));
         System.out.println(checkout.get(0).getName());//testing of checkout.
          
