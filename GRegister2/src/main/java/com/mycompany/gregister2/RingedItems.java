@@ -17,7 +17,7 @@ public class RingedItems extends ArrayList<Item>{
         this.add(item);
     }
     
-    public float totalAllItems(){
+    public float totalAllItems(){//Iterates all the Item obj in arraylist and totals the price
         int cost=0;
         for(int i = 1; i<=this.size()-1;i++){
             cost+=this.get(i).getPrice();
