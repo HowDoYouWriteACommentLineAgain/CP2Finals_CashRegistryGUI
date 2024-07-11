@@ -26,7 +26,7 @@ public class Item {
     
     public Item(int row, ArrayList<String> tempStringHolder) {//Will add the item on the row argument.
 //        try {
-            tempStringHolder = new ArrayList<>();
+//            tempStringHolder = new ArrayList<>();
             int y = row;
 //            Scanner InvScanner = new Scanner(p);
 //TODO:
