@@ -33,8 +33,6 @@ public class Inventory extends ArrayList<Item>{
             }
         }
         
-        
-        
         public void printInventory() {
         for (Item item : this) {
             item.printData();
