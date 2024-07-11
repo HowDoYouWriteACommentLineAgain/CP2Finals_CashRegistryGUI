@@ -40,9 +40,10 @@ public class RingedItems extends ArrayList<Item>{
     }
     
     public void printAndIterateNames(){
-        for(int i=1; i<=this.size()-1;i++){
-            System.out.println(this.get(i).getName());
+        for (Item item : this){
+            System.out.println(item.getName());
         }
+        
     }
 //    public void getAllItemsRingedIndividually(){
 //        
