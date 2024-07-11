@@ -12,12 +12,13 @@ import java.util.Objects;
  * @author Admin
  */
 public class RingedItems extends ArrayList<Item>{
+    private double paidAmount = 0.0;
     
     public void ringItem(Item item){
         this.add(item);
     }
     
-    public float totalAllItems(){//Iterates all the Item obj in arraylist and totals the price
+    public double totalAllItems(){//Iterates all the Item obj in arraylist and totals the price
         int cost=0;
         for(int i = 1; i<=this.size()-1;i++){
             cost+=this.get(i).getPrice();
@@ -25,6 +26,14 @@ public class RingedItems extends ArrayList<Item>{
         return cost;
     }
     
+    public void setPaidAmount(double x){//Use to set the paidAmount of the array through the GUI.
+        paidAmount = x;
+    }
+    
+    public double getChangeDue(){//Use to get the change due
+        //!!! Note:Only call if setPaidAmount and totalAllItems are cleared.
+        return paidAmount - totalAllItems();
+    }
     
     public double getItemPrice(int i){
         return this.get(i).getPrice();
