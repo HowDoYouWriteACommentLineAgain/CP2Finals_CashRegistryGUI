@@ -12,7 +12,7 @@ import java.util.Objects;
  * @author Admin
  */
 public class RingedItems extends ArrayList<Item>{
-    private double paidAmount = 0.0;
+    
     
     public void ringItem(Item item){
         this.add(item);
@@ -26,11 +26,7 @@ public class RingedItems extends ArrayList<Item>{
         return cost;
     }
     
-    public void setPaidAmount(double x){//Use to set the paidAmount of the array through the GUI.
-        paidAmount = x;
-    }
-    
-    public double getChangeDue(){//Use to get the change due
+    public double getChangeDue(double paidAmount){//Use to get the change due
         //!!! Note:Only call if setPaidAmount and totalAllItems are cleared.
         return paidAmount - totalAllItems();
     }
