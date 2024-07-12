@@ -26,8 +26,7 @@ public class RingedItems extends ArrayList<Item>{
         return cost;
     }
     
-    public double getChangeDue(double paidAmount){//Use to get the change due
-        //!!! Note:Only call if setPaidAmount and totalAllItems are cleared.
+    public double getChangeDue(double paidAmount){//Use to get the change dues
         return paidAmount - totalAllItems();
     }
     
