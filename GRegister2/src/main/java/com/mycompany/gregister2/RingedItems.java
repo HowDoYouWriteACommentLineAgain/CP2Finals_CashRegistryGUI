@@ -15,13 +15,29 @@ public class RingedItems extends ArrayList<Item>{
     
     
     public void ringItem(Item item){
-        this.add(item);
+        boolean MatchedPrevious = false;
+        int positionOfItem = 1;
+        
+        for(int i=1; i<=this.size()-1;i++){
+            String compare = this.get(i).getName();
+            if (compare.equalsIgnoreCase(item.getName())){
+                MatchedPrevious = true;
+                positionOfItem = i;
+                break;
+            }
+        }
+        if(!MatchedPrevious){
+            this.add(item);
+        }else{
+            this.set(positionOfItem, item);
+        }
+       
     }
     
     public double totalAllItems(){//Iterates all the Item obj in arraylist and totals the price
-        int cost=0;
+        double cost=0;
         for(int i = 1; i<=this.size()-1;i++){
-            cost+=this.get(i).getPrice();
+            cost+=this.getItemTOtalPrice(i);
         }
         return cost;
     }
@@ -32,6 +48,10 @@ public class RingedItems extends ArrayList<Item>{
     
     public double getItemPrice(int i){
         return this.get(i).getPrice();
+    }
+    
+    public double getItemTOtalPrice(int i){
+        return this.get(i).getPrice() * this.get(i).getAmount();
     }
     
     public void printAndIterateNames(){
