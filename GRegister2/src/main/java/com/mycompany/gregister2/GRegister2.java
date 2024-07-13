@@ -18,6 +18,7 @@ import java.util.Scanner;
 
 /*
 TODO:
+testing
 
 -when printing total cost, add system which removes duplicates.
 
