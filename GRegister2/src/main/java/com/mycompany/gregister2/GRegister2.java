@@ -3,6 +3,8 @@
  */
 
 package com.mycompany.gregister2;
+import java.awt.BorderLayout;
+import javax.swing.JLabel;
 import java.nio.file.*;
 import java.io.*;
 import java.util.*;
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
+
 /**
  *
  * @author Admin
@@ -32,6 +35,14 @@ public class GRegister2 {
     static Path p = Paths.get("inventory.csv").toAbsolutePath();
 
     public static void main(String[] args) {
+        
+        OrderMenu menu = new OrderMenu();
+        
+//        JLabel el = new JLabel("");
+//        menu.getContentPane().add(el, BorderLayout.CENTER);
+        menu.pack();
+        menu.setVisible(true);
+        
         Inventory inventory = null;
         
         try {
