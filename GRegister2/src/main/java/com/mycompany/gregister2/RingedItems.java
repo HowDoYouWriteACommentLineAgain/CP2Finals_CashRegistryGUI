@@ -5,8 +5,9 @@
 package com.mycompany.gregister2;
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author Admin
@@ -40,7 +41,17 @@ public class RingedItems extends ArrayList<Item>{
         }
         
     }
-//    public void getAllItemsRingedIndividually(){
-//        
-//    }
+    
+    public Map<String, Integer> generateReceipt() {
+        // Initialize the hash map to store item counts
+        Map<String, Integer> itemCount = new HashMap<>();
+
+        // Iterate through the items in the list
+        for (Item item : this) {
+            String itemName = item.getName();
+            itemCount.put(itemName, itemCount.getOrDefault(itemName, 0) + 1);
+        }
+
+        return itemCount;
+    }
 }

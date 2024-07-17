@@ -37,7 +37,7 @@ public class GRegister2 {
         try {
             Scanner scanner = new Scanner(p);
             inventory = new Inventory(scanner);
-            inventory.printInventory();
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,10 +45,19 @@ public class GRegister2 {
         RingedItems checkout = new RingedItems();//stores items that are ringed
         
         checkout.add(inventory.get(0));
-        System.out.println(checkout.get(0).getName());//testing of checkout.
-         
-//         System.out.println("Your Total is: $"+checkout.totalAllItems());
-//         inventory.printInventory();
+        checkout.add(inventory.get(1));
+        checkout.add(inventory.get(1));
+        checkout.add(inventory.get(0));
+        checkout.add(inventory.get(0));
+        checkout.add(inventory.get(2));
+        checkout.add(inventory.get(2));
+        
+        Map<String, Integer> itemCount = checkout.generateReceipt();
+        
+        System.out.println("Receipt:");
+        for (Map.Entry<String, Integer> entry : itemCount.entrySet()) {
+            System.out.println(entry.getKey() + " x" + entry.getValue());
+        }
     }
 }
 //            System.out.println(inventory.get(i).getName());// use getName or getPrice etc for indiv.
