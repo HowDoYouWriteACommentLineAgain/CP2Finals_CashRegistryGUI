@@ -14,7 +14,6 @@ import java.util.Map;
  */
 public class RingedItems extends ArrayList<Item>{
     
-    
     public void ringItem(Item item){
         this.add(item);
     }
@@ -57,5 +56,16 @@ public class RingedItems extends ArrayList<Item>{
         }
 
         return itemCount;
+    }
+    
+    public void printReciept(Map<String, double[]> itemCount){
+//        Map<String, double[]> itemCount = this.generateReceipt();
+        
+        System.out.println("Receipt:");
+        for (Map.Entry<String, double[]> entry : itemCount.entrySet()) {
+            String itemName = entry.getKey();
+            double[] summary = entry.getValue();
+            System.out.println(itemName + " x" + (int)summary[0] + " @ " + summary[1] + " total");
+            }
     }
 }
