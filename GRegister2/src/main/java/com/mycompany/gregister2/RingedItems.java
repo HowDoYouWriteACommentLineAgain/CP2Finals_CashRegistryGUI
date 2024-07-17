@@ -42,14 +42,18 @@ public class RingedItems extends ArrayList<Item>{
         
     }
     
-    public Map<String, Integer> generateReceipt() {
+    public Map<String, double[]> generateReceipt() {
         // Initialize the hash map to store item counts
-        Map<String, Integer> itemCount = new HashMap<>();
+        Map<String, double[]> itemCount = new HashMap<>();
 
-        // Iterate through the items in the list
+        // Iterate through the items in the list and combines all similar items
         for (Item item : this) {
             String itemName = item.getName();
-            itemCount.put(itemName, itemCount.getOrDefault(itemName, 0) + 1);
+            double itemPrice = item.getPrice();
+            double[] summary = itemCount.getOrDefault(itemName, new double[2]);
+            summary[0]++;//Stores how many of this item occurs
+            summary[1] += itemPrice;//stores how much the items are total.
+            itemCount.put(itemName, summary);
         }
 
         return itemCount;

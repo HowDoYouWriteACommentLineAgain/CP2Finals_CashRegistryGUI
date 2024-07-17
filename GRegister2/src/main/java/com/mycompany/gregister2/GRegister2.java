@@ -52,12 +52,14 @@ public class GRegister2 {
         checkout.add(inventory.get(2));
         checkout.add(inventory.get(2));
         
-        Map<String, Integer> itemCount = checkout.generateReceipt();
+        Map<String, double[]> itemCount = checkout.generateReceipt();
         
         System.out.println("Receipt:");
-        for (Map.Entry<String, Integer> entry : itemCount.entrySet()) {
-            System.out.println(entry.getKey() + " x" + entry.getValue());
-        }
+        for (Map.Entry<String, double[]> entry : itemCount.entrySet()) {
+            String itemName = entry.getKey();
+            double[] summary = entry.getValue();
+            System.out.println(itemName + " x" + (int)summary[0] + " @ " + summary[1] + " total");
+            }
     }
 }
 //            System.out.println(inventory.get(i).getName());// use getName or getPrice etc for indiv.
