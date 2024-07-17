@@ -58,8 +58,8 @@ public class RingedItems extends ArrayList<Item>{
         return itemCount;
     }
     
-    public void printReciept(Map<String, double[]> itemCount){
-//        Map<String, double[]> itemCount = this.generateReceipt();
+    public void printReciept(Map<String, double[]> generateReceipt){
+        Map<String, double[]> itemCount = generateReceipt;
         
         System.out.println("Receipt:");
         for (Map.Entry<String, double[]> entry : itemCount.entrySet()) {
