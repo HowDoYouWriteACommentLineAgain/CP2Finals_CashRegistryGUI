@@ -3,13 +3,6 @@
  */
 
 package com.mycompany.gregister2;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import java.nio.file.*;
-import java.io.*;
-import java.util.*;
-import static java.nio.file.StandardOpenOption.*;
-import java.util.ArrayList;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -21,27 +14,17 @@ import java.util.Scanner;
 
 /*
 TODO:
-
--when printing total cost, add system which removes duplicates.
-
--add matching method in ringedItem and if it matched only then add the item
--clear ringed items after checkout
--ringedItem takes total cash and then gives the change.
-
-test
--GUI for Casheier with method from Ringed item interactable there.
+-connect gui
+-add regex for searching items
 */
 public class GRegister2 {
     static Path p = Paths.get("inventory.csv").toAbsolutePath();
 
     public static void main(String[] args) {
         
-        OrderMenu menu = new OrderMenu();
-        
-//        JLabel el = new JLabel("");
-//        menu.getContentPane().add(el, BorderLayout.CENTER);
-        menu.pack();
-        menu.setVisible(true);
+//        OrderMenu menu = new OrderMenu();
+//        menu.pack();
+//        menu.setVisible(true);
         
         Inventory inventory = null;
         
@@ -55,13 +38,8 @@ public class GRegister2 {
         
         RingedItems checkout = new RingedItems();//stores items that are ringed
         
-        checkout.add(inventory.get(0));
-        checkout.add(inventory.get(1));
-        checkout.add(inventory.get(1));
-        checkout.add(inventory.get(0));
-        checkout.add(inventory.get(0));
-        checkout.add(inventory.get(2));
-        checkout.add(inventory.get(2));
+        checkout.add(inventory.get(0));//this works
+        
         
         checkout.printReciept(checkout.generateReceipt());
     }
