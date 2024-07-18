@@ -22,26 +22,24 @@ public class GRegister2 {
 
     public static void main(String[] args) {
         
-//        OrderMenu menu = new OrderMenu();
-//        menu.pack();
-//        menu.setVisible(true);
+        OrderMenu menu = new OrderMenu();
+        menu.pack();
+        menu.setVisible(true);
         
-        Inventory inventory = null;
-        
-        try {
-            Scanner scanner = new Scanner(p);
-            inventory = new Inventory(scanner);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-        RingedItems checkout = new RingedItems();//stores items that are ringed
-        
-        checkout.add(inventory.get(0));//this works
+//        Inventory inventory = null;        
+//        try {
+//            Scanner scanner = new Scanner(p);
+//            inventory = new Inventory(scanner);            
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        
+//        RingedItems checkout = new RingedItems();//stores items that are ringed
+//        
+//        checkout.add(inventory.get(0));//this works
         
         
-        checkout.printReciept(checkout.generateReceipt());
+//        checkout.printReciept(checkout.generateReceipt());
     }
 }
 //            System.out.println(inventory.get(i).getName());// use getName or getPrice etc for indiv.
