@@ -19,9 +19,11 @@ public class RingedItems extends ArrayList<Item>{
     
     public RingedItems(){
         Path p = Paths.get("inventory.csv").toAbsolutePath();
+        //inits the ringed item
         try {
             Scanner scanner = new Scanner(p);
-            inventory = new Inventory(scanner);            
+            inventory = new Inventory(scanner);
+            scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,13 +32,24 @@ public class RingedItems extends ArrayList<Item>{
     public void ringItem(String id){
         int index = 0;
         for(Item i : inventory){
-            index++;
             String compareThis = i.getId();
             if(compareThis.equals(id)){
                 this.add(inventory.get(index));
-            }
+            }index++;
         }
-//        this.add(item);
+    }
+    
+    //use to create error states when item exist 
+    public boolean doesItemExist(String id){
+        int index = 0;
+        for(Item i : inventory){
+            
+            String compareThis = i.getId();
+            if(compareThis.equals(id)){
+                return true;
+            }index++;
+        }
+        return false;
     }
     
     public double totalAllItems(){//Iterates all the Item obj in arraylist and totals the price
