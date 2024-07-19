@@ -22,9 +22,9 @@ public class GRegister2 {
 
     public static void main(String[] args) {
         
-        OrderMenu menu = new OrderMenu();
-        menu.pack();
-        menu.setVisible(true);
+//        OrderMenu menu = new OrderMenu();
+//        menu.pack();
+//        menu.setVisible(true);
         
 //        Inventory inventory = null;        
 //        try {
@@ -34,7 +34,9 @@ public class GRegister2 {
 //            e.printStackTrace();
 //        }
 //        
-//        RingedItems checkout = new RingedItems();//stores items that are ringed
+        RingedItems checkout = new RingedItems();//stores items that are ringed
+        checkout.ringItem("133598000001");
+        checkout.printReciept();
 //        
 //        checkout.add(inventory.get(0));//this works
         
