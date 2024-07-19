@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.gregister2;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,9 +15,28 @@ import java.util.Map;
  * @author Admin
  */
 public class RingedItems extends ArrayList<Item>{
+    static Inventory inventory = null;
     
-    public void ringItem(Item item){
-        this.add(item);
+    public RingedItems(){
+        Path p = Paths.get("inventory.csv").toAbsolutePath();
+        try {
+            Scanner scanner = new Scanner(p);
+            inventory = new Inventory(scanner);            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void ringItem(String id){
+        int index = 0;
+        for(Item i : inventory){
+            index++;
+            String compareThis = i.getId();
+            if(compareThis.equals(id)){
+                this.add(inventory.get(index));
+            }
+        }
+//        this.add(item);
     }
     
     public double totalAllItems(){//Iterates all the Item obj in arraylist and totals the price
@@ -41,7 +62,8 @@ public class RingedItems extends ArrayList<Item>{
         
     }
     
-    public Map<String, double[]> generateReceipt() {
+    //This is used by the method after this.
+    private Map<String, double[]> generateReceipt() {
         // Initialize the hash map to store item counts
         Map<String, double[]> itemCount = new HashMap<>();
 
@@ -58,8 +80,9 @@ public class RingedItems extends ArrayList<Item>{
         return itemCount;
     }
     
-    public void printReciept(Map<String, double[]> generateReceipt){
-        Map<String, double[]> itemCount = generateReceipt;
+    //use this to print the reciept
+    public void printReciept(){
+        Map<String, double[]> itemCount = this.generateReceipt();
         
         System.out.println("Receipt:");
         for (Map.Entry<String, double[]> entry : itemCount.entrySet()) {
