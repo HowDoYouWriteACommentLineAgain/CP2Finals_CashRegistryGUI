@@ -28,7 +28,7 @@ public class GRegister2 {
         menu.setVisible(true);
         
         //Sample Code with breif explanation 
-        //Palagay nalang nito sa Ordermenu.
+        //Palagay nalang nito sa Ordermenu. Padelete nalang here after.
             RingedItems checkout = new RingedItems();//init the RingedItems arraylist. Name it whatever you want
             
             checkout.doesItemExist("133598000001");//sample of checking if Item exist. Returns bool
