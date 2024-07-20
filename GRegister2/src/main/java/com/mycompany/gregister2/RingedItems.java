@@ -10,10 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author Admin
- */
 public class RingedItems extends ArrayList<Item>{
     static Inventory inventory = null;
     
@@ -35,7 +31,8 @@ public class RingedItems extends ArrayList<Item>{
             String compareThis = i.getId();
             if(compareThis.equals(id)){
                 this.add(inventory.get(index));
-            }index++;
+            }
+            index++;
         }
     }
     
@@ -54,8 +51,8 @@ public class RingedItems extends ArrayList<Item>{
     
     public double totalAllItems(){//Iterates all the Item obj in arraylist and totals the price
         int cost=0;
-        for(int i = 1; i<=this.size()-1;i++){
-            cost+=this.get(i).getPrice();
+        for(Item item : this){
+            cost+=item.getPrice();
         }
         return cost;
     }
@@ -66,6 +63,10 @@ public class RingedItems extends ArrayList<Item>{
     
     public double getItemPrice(int i){
         return this.get(i).getPrice();
+    }
+    
+    public String getItemName(int i){
+        return this.get(i).getName();
     }
     
     public void printAndIterateNames(){
@@ -94,14 +95,17 @@ public class RingedItems extends ArrayList<Item>{
     }
     
     //use this to print the reciept
-    public void printReciept(){
+    public String printReciept(){
         Map<String, double[]> itemCount = this.generateReceipt();
         
-        System.out.println("Receipt:");
+        String output = "------------------------- RECEIPT -------------------------\n";
+        
         for (Map.Entry<String, double[]> entry : itemCount.entrySet()) {
             String itemName = entry.getKey();
             double[] summary = entry.getValue();
-            System.out.println(itemName + " x" + (int)summary[0] + " @ " + summary[1] + " total");
+            output += "\n" + itemName + " x" + (int)summary[0] + " @ ₱" + summary[1] + " total\n";
             }
+        output += "\nTOTAL: ₱" + totalAllItems();
+        return output;
     }
 }
