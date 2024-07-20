@@ -4,15 +4,10 @@
  */
 package com.mycompany.gregister2;
 
-//import java.nio.file.Path;
-//import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Scanner;
 
-/**
- *
- * @author Admin
- */
+import java.util.ArrayList;
+
+
 public class Item {
     
     private String id, name;
@@ -60,9 +55,4 @@ public class Item {
     public void printPrice() {
         System.out.println("₱" + price);
     }
-//    public void printAll() {
-//        for (int i = 0; i <= tempStringHolder.size() - 1; i++) {
-//            System.out.println(i + " " + tempStringHolder.get(i));
-//        }
-//    }
 }

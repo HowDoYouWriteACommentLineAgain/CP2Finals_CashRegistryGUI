@@ -1,5 +1,13 @@
 package com.mycompany.gregister2;
 
+import java.text.*;
+import java.math.RoundingMode;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -10,6 +18,8 @@ package com.mycompany.gregister2;
  * @author Student
  */
 public class OrderMenu extends javax.swing.JFrame {
+    
+    public int addCount = 0;
 
     /**
      * Creates new form OrderMenu
@@ -17,6 +27,9 @@ public class OrderMenu extends javax.swing.JFrame {
     public OrderMenu() {
         initComponents();
     }
+    
+    //intializes ringedItems class
+    RingedItems checkout = new RingedItems();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,22 +54,26 @@ public class OrderMenu extends javax.swing.JFrame {
         Two = new javax.swing.JButton();
         Three = new javax.swing.JButton();
         Zero = new javax.swing.JButton();
-        Ok = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        Enter = new javax.swing.JButton();
+        BCK = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        Checkout = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Receipt = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        CompanyName.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        CompanyName.setText("STORE");
+        CompanyName.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        CompanyName.setText("SELL N' SMALL CONVENIENCE STORE\n");
 
-        TotalField.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        TotalField.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
 
         InputField.setEditable(false);
-        InputField.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        InputField.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         InputField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         InputField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +81,9 @@ public class OrderMenu extends javax.swing.JFrame {
             }
         });
 
+        Clr.setBackground(new java.awt.Color(153, 51, 0));
         Clr.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        Clr.setForeground(new java.awt.Color(255, 255, 255));
         Clr.setText("CLR");
         Clr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,61 +171,92 @@ public class OrderMenu extends javax.swing.JFrame {
             }
         });
 
-        Ok.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        Ok.setText("OK");
-        Ok.addActionListener(new java.awt.event.ActionListener() {
+        Enter.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        Enter.setText("ENTER");
+        Enter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OkActionPerformed(evt);
+                EnterActionPerformed(evt);
             }
         });
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        BCK.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        BCK.setText("<--");
+        BCK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BCKActionPerformed(evt);
+            }
+        });
+
+        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Item", "Price"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        Checkout.setBackground(new java.awt.Color(51, 102, 0));
+        Checkout.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        Checkout.setForeground(new java.awt.Color(255, 255, 255));
+        Checkout.setText("Checkout");
+        Checkout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckoutActionPerformed(evt);
+            }
+        });
+
+        Receipt.setEditable(false);
+        Receipt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jScrollPane3.setViewportView(Receipt);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(808, 808, 808)
-                        .addComponent(CompanyName))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TotalField, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2))
-                        .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+                    .addComponent(TotalField))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(InputField)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(Clr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(InputField)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(One, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Two, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(Four, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Five, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(Seven, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Eight, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(One, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Six, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Three, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Nine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Zero, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)
-                                .addComponent(Ok, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                                .addComponent(Two, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(Four, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Five, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(Seven, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Eight, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Six, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Three, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Nine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BCK, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Zero, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(Enter, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(488, 488, 488)
+                .addComponent(CompanyName)
+                .addContainerGap(510, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,32 +265,40 @@ public class OrderMenu extends javax.swing.JFrame {
                 .addComponent(CompanyName, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(InputField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Clr, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Seven, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Eight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Nine, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Four, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Five, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(Six, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(One, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
-                            .addComponent(Two, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Three, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane2))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Ok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TotalField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(Zero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(360, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(26, 26, 26)
+                            .addComponent(TotalField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(InputField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Clr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BCK, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Seven, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Eight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Nine, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(Four, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Five, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Six, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(One, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Two, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Three, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(26, 26, 26)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Zero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Enter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addComponent(Checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -250,64 +308,103 @@ public class OrderMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_InputFieldActionPerformed
 
+    
+    //Buttons One, Two, Three... and Zero
     private void OneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OneActionPerformed
-        // TODO add your handling code here:
+
         InputField.setText(InputField.getText() + "1");
     }//GEN-LAST:event_OneActionPerformed
 
     private void TwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TwoActionPerformed
-        // TODO add your handling code here:
+        
         InputField.setText(InputField.getText() + "2");
     }//GEN-LAST:event_TwoActionPerformed
 
     private void ThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThreeActionPerformed
-        // TODO add your handling code here:
+        
         InputField.setText(InputField.getText() + "3");
     }//GEN-LAST:event_ThreeActionPerformed
 
     private void FourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FourActionPerformed
-        // TODO add your handling code here:
+        
         InputField.setText(InputField.getText() + "4");
     }//GEN-LAST:event_FourActionPerformed
 
     private void FiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiveActionPerformed
-        // TODO add your handling code here:
+        
         InputField.setText(InputField.getText() + "5");
     }//GEN-LAST:event_FiveActionPerformed
 
     private void SixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SixActionPerformed
-        // TODO add your handling code here:
+        
         InputField.setText(InputField.getText() + "6");
     }//GEN-LAST:event_SixActionPerformed
 
     private void SevenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SevenActionPerformed
-        // TODO add your handling code here:
+        
         InputField.setText(InputField.getText() + "7");
     }//GEN-LAST:event_SevenActionPerformed
 
     private void EightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EightActionPerformed
-        // TODO add your handling code here:
+        
         InputField.setText(InputField.getText() + "8");
     }//GEN-LAST:event_EightActionPerformed
 
     private void NineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NineActionPerformed
-        // TODO add your handling code here:
+        
         InputField.setText(InputField.getText() + "9");
     }//GEN-LAST:event_NineActionPerformed
 
     private void ZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZeroActionPerformed
-        // TODO add your handling code here:
+        
         InputField.setText(InputField.getText() + "0");
     }//GEN-LAST:event_ZeroActionPerformed
 
-    private void OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_OkActionPerformed
+    private void EnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterActionPerformed
+        // When enter is pressed, input is taken and if it is an appropriate item id, respective item is ringed and added to table
+        String comp = InputField.getText();
+        if (checkout.doesItemExist(comp))
+        {
+            checkout.ringItem(comp);
+            addTable(addCount, comp);
+            addCount += 1;
+            TotalField.setText("TOTAL: ₱" + checkout.totalAllItems());
+        }
+        InputField.setText("");
+    }//GEN-LAST:event_EnterActionPerformed
 
     private void ClrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClrActionPerformed
         // TODO add your handling code here:
         InputField.setText("");
     }//GEN-LAST:event_ClrActionPerformed
+
+    private void BCKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCKActionPerformed
+        // allows for use of a backspace key
+        int length = InputField.getText().length();
+        int num = InputField.getText().length() - 1;
+        String st;
+        
+        if (length > 0)
+        {
+            StringBuilder back = new StringBuilder(InputField.getText());
+            back.deleteCharAt(num);
+            st = back.toString();
+            InputField.setText(st);
+        }
+    }//GEN-LAST:event_BCKActionPerformed
+    
+    //On press of the Checkout Button, receipt is printed on the right-hand text pane
+    private void CheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckoutActionPerformed
+        // Styles the output so that the text is displayed with center alignment
+        StyledDocument doc = Receipt.getStyledDocument();
+        SimpleAttributeSet center = new SimpleAttributeSet();
+        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+        doc.setParagraphAttributes(0, doc.getLength(), center, false);
+        
+        //prints receipt
+        Receipt.setText(checkout.printReciept());
+        addCount = 0;
+    }//GEN-LAST:event_CheckoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,24 +440,38 @@ public class OrderMenu extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void addTable(int i, String id) // code for adding item to the display table
+    {
+        DefaultTableModel dt = (DefaultTableModel) jTable1.getModel();
+        Vector v = new Vector();
+        v.add(id);
+        v.add(checkout.getItemName(i));
+        v.add("₱" + checkout.getItemPrice(i));
+        dt.addRow(v);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BCK;
+    private javax.swing.JButton Checkout;
     private javax.swing.JButton Clr;
     private javax.swing.JLabel CompanyName;
     private javax.swing.JButton Eight;
+    private javax.swing.JButton Enter;
     private javax.swing.JButton Five;
     private javax.swing.JButton Four;
     private javax.swing.JTextField InputField;
     private javax.swing.JButton Nine;
-    private javax.swing.JButton Ok;
     private javax.swing.JButton One;
+    private javax.swing.JTextPane Receipt;
     private javax.swing.JButton Seven;
     private javax.swing.JButton Six;
     private javax.swing.JButton Three;
     private javax.swing.JTextField TotalField;
     private javax.swing.JButton Two;
     private javax.swing.JButton Zero;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

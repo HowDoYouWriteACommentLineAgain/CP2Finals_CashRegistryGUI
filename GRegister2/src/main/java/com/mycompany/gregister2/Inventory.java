@@ -6,12 +6,10 @@ package com.mycompany.gregister2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-/**
- *
- * @author Admin
- */
+
+
 public class Inventory extends ArrayList<Item>{
-//    ArrayList<Item> inventory = new ArrayList<>();//Creates the inventory
+        //Creates the inventory
     
         public Inventory(Scanner s){
             ArrayList<String> tempStringHolder = new ArrayList<>();
