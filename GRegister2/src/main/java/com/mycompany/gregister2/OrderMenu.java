@@ -26,6 +26,7 @@ public class OrderMenu extends javax.swing.JFrame {
      */
     public OrderMenu() {
         initComponents();
+        checkout.InitializeItems();
     }
     
     //intializes ringedItems class
@@ -404,6 +405,9 @@ public class OrderMenu extends javax.swing.JFrame {
         //prints receipt
         Receipt.setText(checkout.printReciept());
         addCount = 0;
+        clearTable();
+        checkout.clear();
+        checkout.InitializeItems();
     }//GEN-LAST:event_CheckoutActionPerformed
 
     /**
@@ -449,6 +453,11 @@ public class OrderMenu extends javax.swing.JFrame {
         v.add(checkout.getItemName(i));
         v.add("₱" + checkout.getItemPrice(i));
         dt.addRow(v);
+    }
+    
+    public void clearTable(){
+        DefaultTableModel toClear = (DefaultTableModel) jTable1.getModel();
+        toClear.setRowCount(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

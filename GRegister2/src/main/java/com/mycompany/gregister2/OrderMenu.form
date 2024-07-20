@@ -90,45 +90,43 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jScrollPane3" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="616" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="TotalField" min="-2" pref="140" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="616" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="TotalField" min="-2" pref="140" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="InputField" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="Clr" max="32767" attributes="0"/>
+                          <Component id="BCK" min="-2" pref="96" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="InputField" min="-2" pref="140" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Clr" max="32767" attributes="0"/>
-                              <Component id="BCK" min="-2" pref="96" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Seven" max="32767" attributes="0"/>
-                              <Component id="Eight" max="32767" attributes="0"/>
-                              <Component id="Nine" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="Four" max="32767" attributes="0"/>
-                              <Component id="Five" max="32767" attributes="0"/>
-                              <Component id="Six" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="One" max="32767" attributes="0"/>
-                              <Component id="Two" max="32767" attributes="0"/>
-                              <Component id="Three" min="-2" pref="108" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Zero" max="32767" attributes="0"/>
-                              <Component id="Enter" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="Checkout" min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="Seven" max="32767" attributes="0"/>
+                          <Component id="Eight" max="32767" attributes="0"/>
+                          <Component id="Nine" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="Four" max="32767" attributes="0"/>
+                          <Component id="Five" max="32767" attributes="0"/>
+                          <Component id="Six" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="One" max="32767" attributes="0"/>
+                          <Component id="Two" max="32767" attributes="0"/>
+                          <Component id="Three" min="-2" pref="108" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Zero" max="32767" attributes="0"/>
+                          <Component id="Enter" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="Checkout" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="20" max="32767" attributes="0"/>
