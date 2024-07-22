@@ -80,7 +80,7 @@ public class RingedItems extends ArrayList<Item>{
     }
     
     //This is used by the method after this.
-    private Map<String, double[]> generateReceipt() {
+    public Map<String, double[]> generateReceipt() {
         // Initialize the hash map to store item counts
         Map<String, double[]> itemCount = new HashMap<>();
 
