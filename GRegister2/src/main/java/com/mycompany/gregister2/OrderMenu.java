@@ -431,6 +431,7 @@ public class OrderMenu extends javax.swing.JFrame {
         
         //prints receipt
         Receipt.setText(checkout.printReciept(payment, change));
+        TotalField.setText("");
         addCount = 0;
         clearTable();
         checkout.clear();
