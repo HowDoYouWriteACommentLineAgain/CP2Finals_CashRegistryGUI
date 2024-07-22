@@ -99,7 +99,7 @@ public class RingedItems extends ArrayList<Item>{
     }
     
     //use this to print the reciept
-    public String printReciept(){
+    public String printReciept(String payment, String change){
         Map<String, double[]> itemCount = this.generateReceipt();
         
         String output = "SALES INVOICE\n========\n"+LocalDate.now()+"\n========\n";
@@ -109,7 +109,10 @@ public class RingedItems extends ArrayList<Item>{
             double[] summary = entry.getValue();
             output += "\n" + itemName + " x" + (int)summary[0] + " @ ₱" + summary[1] + " total\n";
             }
-        output += "\n-------------\nTOTAL: ₱" + totalAllItems()+"\nThank you for Shopping with us.";
+        output  += "\n-------------\nTOTAL DUE: ₱" + totalAllItems()
+                +"\nCASH: ₱"+payment
+                +"\nCHANGE: ₱"+change
+                +"\n*******************\nThank you for Shopping with us.";
         return output;
     }
 }
