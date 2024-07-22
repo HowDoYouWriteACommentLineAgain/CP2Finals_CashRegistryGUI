@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.time.LocalDate;
 
 public class RingedItems extends ArrayList<Item>{
     static Inventory inventory = null;
@@ -101,14 +102,14 @@ public class RingedItems extends ArrayList<Item>{
     public String printReciept(){
         Map<String, double[]> itemCount = this.generateReceipt();
         
-        String output = "------------------------- RECEIPT -------------------------\n";
+        String output = "SALES INVOICE\n========\n"+LocalDate.now()+"\n========\n";
         
         for (Map.Entry<String, double[]> entry : itemCount.entrySet()) {
             String itemName = entry.getKey();
             double[] summary = entry.getValue();
             output += "\n" + itemName + " x" + (int)summary[0] + " @ ₱" + summary[1] + " total\n";
             }
-        output += "\nTOTAL: ₱" + totalAllItems();
+        output += "\n-------------\nTOTAL: ₱" + totalAllItems()+"\nThank you for Shopping with us.";
         return output;
     }
 }

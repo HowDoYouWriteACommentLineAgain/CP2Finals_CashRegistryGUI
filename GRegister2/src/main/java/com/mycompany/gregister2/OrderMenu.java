@@ -3,6 +3,7 @@ package com.mycompany.gregister2;
 import java.awt.event.KeyEvent;
 import java.text.*;
 import java.math.RoundingMode;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -34,6 +35,7 @@ public class OrderMenu extends javax.swing.JFrame {
     
     //intializes ringedItems class
     RingedItems checkout = new RingedItems();
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -382,8 +384,8 @@ public class OrderMenu extends javax.swing.JFrame {
         if (checkout.doesItemExist(comp))
         {
             checkout.ringItem(comp);
-            addTable(addCount, comp);
-            addCount += 1;
+            addTable();
+            
             TotalField.setText("TOTAL: ₱" + checkout.totalAllItems());
         } else {
             JOptionPane.showMessageDialog(rootPane, "Item does not exist.");
@@ -433,8 +435,8 @@ public class OrderMenu extends javax.swing.JFrame {
             String comp = InputField.getText();
             if (checkout.doesItemExist(comp)){
                 checkout.ringItem(comp);
-                addTable(addCount, comp);
-                addCount += 1;
+                addTable();
+                
                 TotalField.setText("TOTAL: ₱" + checkout.totalAllItems());
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Item does not exist.");
@@ -478,20 +480,22 @@ public class OrderMenu extends javax.swing.JFrame {
         });
     }
     
-    public void addTable(int i, String id) // code for adding item to the display table
+    public void addTable() // code for adding item to the display table
     {
         clearTable();
-        Map<String, double[]> currentItemsMap = checkout.generateReceipt();
         DefaultTableModel dt = (DefaultTableModel) jTable1.getModel();
-        Vector v = new Vector();
+        Map<String, double[]> currentItemsMap = checkout.generateReceipt();
+//        Map<String, double[]> itemCount = new HashMap<>();
+        
+
         for (Map.Entry<String, double[]> entry : currentItemsMap.entrySet()) {
-            String itemName = entry.getKey();
-            double[] summary = entry.getValue();
-            v.add(itemName);
-            v.add("₱"+summary[1]);
-            v.add("X"+summary[0]);
+            double summary[] = entry.getValue();
+            Vector v = new Vector();        
+            v.add(entry.getKey());
+            v.add("₱" + summary[1]);
+            v.add(summary[0]);
             dt.addRow(v);
-        }
+        }        
 //        v.add(id);
 //        v.add(currentItemsMap.ge);
 //        v.add("₱" + checkout.getItemPrice(i));
