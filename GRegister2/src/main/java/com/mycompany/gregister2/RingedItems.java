@@ -14,6 +14,9 @@ public class RingedItems extends ArrayList<Item>{
     static Inventory inventory = null;
     
     public RingedItems(){
+    }
+    
+    public void InitializeItems(){
         Path p = Paths.get("inventory.csv").toAbsolutePath();
         //inits the ringed item
         try {
